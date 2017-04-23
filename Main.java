@@ -5,6 +5,7 @@ public class Main
 	public static void main(String[] args)
 	{
 		MyArray ar1 = new MyArray();
-		ar1.show();
+		System.out.println(ar1.aIsSubsetB());
+		System.out.println(ar1.diff());
 	}
 }
