@@ -7,12 +7,30 @@ public class MyArray
 	private String[] arr2;
 	private String[] arr3;
 	 
-	 MyArray () {
-		 arr1 = new String[] {"a", "c", "e", "k", "o", "x", "y", "z"};
-		 arr2 = new String[] {"a", "b", "d", "f", "h", "i", "k", "m", "o", "q", "w"};
+	 MyArray (String subsetA, String subsetB) {
+		 arr1 = clean(subsetA);
+		 arr2 = clean(subsetB);
 		 arr3 = new String[arr1.length+arr2.length];
 	 } 
 	 
+	 public String[] clean (String str) {
+		 int i =0, j=0;
+		 String a = "a";
+		 String[] ch = str.split("");
+		 String[] array = new String[ch.length];
+		 
+		 while (i < ch.length) {
+			 if (a.compareTo(ch[i])>-26 && a.compareTo(ch[i])<1) {
+				 array[j] = ch[i];
+				 j++;
+				 i++;
+			 }
+			 else{i++;}
+		 }
+		 return array;
+	}
+	 
+	
 	 public String printArray (String[] arr) {
 		 int i=0;
 		 String result = "{ ";
@@ -66,7 +84,7 @@ public class MyArray
 			result = "Результат объединения - множество С = " + printArray(arr2);
 			}
 		else {
-			while (i!=arr1.length && j!= arr2.length) {
+			while (i!=arr1.length && j!= arr2.length && arr1[i] != null && arr2[j] != null) {
 				if (arr1[i].compareTo(arr2[j]) == 0) {
 				    arr3[k] = arr1[i];
 				    i++; 
@@ -101,7 +119,7 @@ public class MyArray
 		String result = " ";
 		reset(arr3);
 		
-	    while (i!=arr1.length && j!= arr2.length) {
+	    while (i!=arr1.length && j!= arr2.length && arr1[i] != null && arr2[j] != null) {
 			if (arr1[i].compareTo(arr2[j]) == 0) {
 				arr3[k] = arr1[i];
 				i++; 
@@ -126,7 +144,7 @@ public class MyArray
 		String result = " ";
 		reset(arr3);
 
-	    while (i!=arr1.length && j!= arr2.length) {
+	    while (i!=arr1.length && j!= arr2.length && arr1[i] != null && arr2[j] != null) {
 			if (arr1[i].compareTo(arr2[j]) == 0) {
 				i++; 
 				j++;
@@ -157,7 +175,7 @@ public class MyArray
 		String result = " ";
 		reset(arr3);
 
-	    while (i!=arr1.length && j!= arr2.length) {
+	    while (i<arr1.length && j< arr2.length && arr1[i] != null && arr2[j] != null) {
 			if (arr1[i].compareTo(arr2[j]) == 0) {
 				i++; 
 				j++;
