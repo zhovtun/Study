@@ -25,8 +25,12 @@ public class MyArray
 	 }
 	 
 	 
-	 public void sort() {
-		 //TODO сортировка
+	 public void reset(String[] arr) {
+		 int i = 0;
+		 while(i<arr.length) {
+			 arr[i] = null;
+			 i++;
+		 }
 	 }
 	 
 	 
@@ -55,6 +59,7 @@ public class MyArray
 	public String sum () {  //объединение множеств
 	    int i=0, j=0, k=0;
 		String result = " ";
+		reset(arr3);
 		
 		
 		if (aIsSubsetB() == "Множество А является подмножеством В") {
@@ -79,6 +84,11 @@ public class MyArray
 					k++;
 				}
 			}
+			while (i<arr1.length) {
+				arr3[k] = arr1[i];
+				k++;
+				i++;
+			}
 			result = "Результат объединения - множество С = " + printArray(arr3);
 		}
 		
@@ -89,6 +99,7 @@ public class MyArray
 	public String intersection () {  //умножение (пересечение) множеств
 		int i=0, j=0, k=0;
 		String result = " ";
+		reset(arr3);
 		
 	    while (i!=arr1.length && j!= arr2.length) {
 			if (arr1[i].compareTo(arr2[j]) == 0) {
@@ -113,6 +124,7 @@ public class MyArray
 	public String diff () {  //разность множеств
 		int i=0, j=0, k=0;
 		String result = " ";
+		reset(arr3);
 
 	    while (i!=arr1.length && j!= arr2.length) {
 			if (arr1[i].compareTo(arr2[j]) == 0) {
@@ -143,6 +155,7 @@ public class MyArray
 	public String simmetricDiff () {  //симметрическая разность
 		int i=0, j=0, k=0;
 		String result = " ";
+		reset(arr3);
 
 	    while (i!=arr1.length && j!= arr2.length) {
 			if (arr1[i].compareTo(arr2[j]) == 0) {
