@@ -1,7 +1,7 @@
 package ru.time2store.dmath;
 
-import java.util.Arrays;
-import java.lang.String;
+        import java.util.Arrays;
+        import java.lang.String;
 
 public class MyArray
 {
@@ -22,11 +22,12 @@ public class MyArray
         arr3 = new String[arr1.length + arr2.length];
     }
 
-    public String[] clean (String str) {
+    private String[] clean (String str) {
         int i =0, j=0, k=0;
         String a = "a";
         String[] ch = str.split("");
         String[] array = new String[ch.length];
+        String[] result;
 
         while (i < ch.length) {
             if (a.compareTo(ch[i])>-26 && a.compareTo(ch[i])<1) {
@@ -36,25 +37,42 @@ public class MyArray
             }
             else{i++;}
         }
+        if (ch.length == j) {return array;}
+        else {
+            result = cutArray(array);
+            return result;
+        }
 
-        while (array[k] != null) {k++;}
-        return array;
+
+    }
+
+    private String[] cutArray (String[] array) {
+        int k=0, i=0;
+        while (array[k] != null) {
+            k++;
+        }
+        String[] result = new String[k];
+        while (i != k) {
+            result[i] = array[i];
+            i++;
+        }
+        return result;
     }
 
     private void sort (String[] array) {
         int i = 0, j = 0;
         String temp;
         while (array[i] != null) {
-            
+
         }
 
     }
 
 
-    public String printArray (String[] arr) {
+    private String printArray (String[] arr) {
         int i=0;
         String result = "{ ";
-        while (i < arr.length && arr[i] != null) {
+        while (i < arr.length  && arr[i] != null) {
             result += arr[i] + " ";
             i++;
         }
@@ -63,7 +81,7 @@ public class MyArray
     }
 
 
-    public void reset(String[] arr) {
+    private void reset(String[] arr) {
         int i = 0;
         while(i<arr.length) {
             arr[i] = null;
@@ -73,19 +91,24 @@ public class MyArray
 
 
     public String aIsSubsetB () {  //а является подмножеством в
-        int i=0, j=0;
+        int i=0, j=0, k=0;
         String result;
 
-        while (i!=arr1.length && j!= arr2.length) {
-            if (arr1[i] == arr2[j]) {
+        while (i!=arr1.length && j!= arr2.length && arr1[i] != null && arr2[j] != null) {
+            if (arr1[i].compareTo(arr2[j]) == 0) {
                 i++;
+                j++;
+                k++;
+            }
+            else if (arr1[i].compareTo(arr2[j]) > 0) {
                 j++;
             }
             else {
-                j++;
-            }
+                i++;
+             }
         }
-        if (i == arr1.length) {
+
+        if (k == arr1.length) {
             return result = "Множество А является подмножеством В";
         }
         else {
@@ -220,6 +243,4 @@ public class MyArray
         else {result = "Результат симметрической разности - множество С = " + printArray(arr3);}
         return result;
     }
-
-
 }
